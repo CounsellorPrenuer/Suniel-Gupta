@@ -10,7 +10,7 @@ export default async function Home() {
   const homePage = await getPageBySlug('home')
 
   if (homePage) {
-    redirect('/home')
+    redirect('/DC-John/home')
   }
 
   // Fallback welcome message
