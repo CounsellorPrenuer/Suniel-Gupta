@@ -17,8 +17,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const navbar = await getNavbar()
-  const siteConfig = await getSiteConfig()
+  let navbar = null
+  let siteConfig = null
+
+  try {
+    navbar = await getNavbar()
+  } catch (error) {
+    console.log('[Layout] Navbar fetch failed, using defaults')
+  }
+
+  try {
+    siteConfig = await getSiteConfig()
+  } catch (error) {
+    console.log('[Layout] SiteConfig fetch failed, using defaults')
+  }
 
   // Define CSS variables from Sanity with sensible defaults
   const cssVars = {

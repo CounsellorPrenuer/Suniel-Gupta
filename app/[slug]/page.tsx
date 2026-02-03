@@ -12,7 +12,13 @@ interface PageParams {
  * Fetches page data from Sanity and renders sections using the registry
  */
 export default async function Page({ params }: { params: PageParams }) {
-  const page = await getPageBySlug(params.slug)
+  let page = null
+
+  try {
+    page = await getPageBySlug(params.slug)
+  } catch (error) {
+    console.log(`[Page ${params.slug}] Fetch failed:`, error)
+  }
 
   if (!page) {
     notFound()

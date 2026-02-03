@@ -5,8 +5,13 @@ import { getPageBySlug } from '@/lib/sanity'
  * Shows welcome page or home content
  */
 export default async function Home() {
-  // Try to fetch the "home" page
-  const homePage = await getPageBySlug('home')
+  let homePage = null
+
+  try {
+    homePage = await getPageBySlug('home')
+  } catch (error) {
+    console.log('[Home] Failed to fetch home page, using fallback')
+  }
 
   // If home page exists in Sanity, render it directly
   if (homePage) {
