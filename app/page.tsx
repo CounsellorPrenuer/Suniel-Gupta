@@ -48,7 +48,7 @@ export default async function Home() {
       </p>
       <p>
         <a
-          href="/DC-John/admin"
+          href="/admin"
           style={{
             display: 'inline-block',
             backgroundColor: 'var(--color-primary)',
