@@ -85,13 +85,18 @@ export default async function Page({ params }: { params: PageParams }) {
 
 /**
  * Generate static params for all pages at build time
- * Enables Static Generation (ISR) for all pages
+ * For static export without Sanity, return empty array
  */
 export async function generateStaticParams() {
-  const pages = await getAllPageSlugs()
-  return pages.map((page: any) => ({
-    slug: page.slug,
-  }))
+  try {
+    const pages = await getAllPageSlugs()
+    return pages.map((page: any) => ({
+      slug: page.slug,
+    }))
+  } catch (error) {
+    console.log('[generateStaticParams] Sanity unreachable, returning empty params')
+    return []
+  }
 }
 
 /**
