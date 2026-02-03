@@ -7,9 +7,6 @@ import { getNavbar, getSiteConfig } from '@/lib/sanity'
 export const metadata: Metadata = {
   title: 'Remixable Template',
   description: 'A reusable section-based website template powered by Sanity CMS',
-  icons: {
-    icon: '/DC-John/favicon.svg',
-  },
 }
 
 export default async function RootLayout({
