@@ -387,7 +387,7 @@ export function PackagesSection({
           max-width: 2200px;
           width: 95%;
           margin: 0 auto;
-          padding: 60px 0;
+          padding: 40px 0;
         }
 
         .packages-head {
@@ -444,14 +444,15 @@ export function PackagesSection({
         }
 
         .plan-card {
-          position: relative;
-          border-radius: 12px;
-          border: 1px solid rgba(13, 42, 99, 0.18);
-          background: #ffffff;
-          padding: 22px;
-          box-shadow: 0 6px 14px rgba(13, 42, 99, 0.08);
+          padding: 30px;
+          background: white;
+          border-radius: 20px;
           display: flex;
           flex-direction: column;
+          height: 100%;
+          box-shadow: 0 4px 16px rgba(13, 42, 99, 0.08);
+          border: 1px solid #eee;
+          transition: transform 0.3s ease;
         }
 
         .plan-card.featured {
