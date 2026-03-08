@@ -18,7 +18,7 @@ export const sanityClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false,
   perspective: 'published',
 })
 
@@ -105,6 +105,9 @@ export async function getSiteConfig() {
     *[_type == "site"][0] {
       title,
       description,
+      email,
+      phone,
+      address,
       logo,
       logoImage {
         asset->{
@@ -122,6 +125,177 @@ export async function getSiteConfig() {
       borderColor,
       footerBackground,
       footerText
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone packages content
+ */
+export async function getPackages() {
+  const query = `
+    *[_type == "packages"][0] {
+      _id,
+      _type,
+      sectionTitle,
+      sectionSubtitle,
+      sectionId,
+      packageCategories,
+      heading,
+      subheading,
+      audienceTabs,
+      plans,
+      addOnsHeading,
+      addOnsDescription,
+      addOns
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone hero content
+ */
+export async function getHero() {
+  const query = `
+    *[_type == "hero"][0] {
+      _id,
+      _type,
+      headline,
+      subheadline,
+      ctaText,
+      ctaLink
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone about content
+ */
+export async function getAbout() {
+  const query = `
+    *[_type == "about"][0] {
+      _id,
+      _type,
+      sectionHeading,
+      sectionSubheading,
+      title,
+      description,
+      quote,
+      highlights,
+      image {
+        ...,
+        asset->
+      }
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone services list
+ */
+export async function getServices() {
+  const query = `
+    *[_type == "service"] | order(order asc) {
+      _id,
+      title,
+      description,
+      icon,
+      image {
+        ...,
+        asset->
+      },
+      order
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone testimonials list
+ */
+export async function getTestimonials() {
+  const query = `
+    *[_type == "testimonial"] | order(order asc) {
+      _id,
+      name,
+      role,
+      quote,
+      rating,
+      company,
+      image {
+        ...,
+        asset->
+      }
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone contact content
+ */
+export async function getContact() {
+  const query = `
+    *[_type == "contact"][0] {
+      _id,
+      title,
+      description,
+      email,
+      phone,
+      address,
+      formTitle,
+      backgroundImage {
+        ...,
+        asset->
+      }
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone footer content
+ */
+export async function getFooter() {
+  const query = `
+    *[_type == "footer"][0] {
+      _id,
+      _type,
+      copyright,
+      socialLinks[] {
+        label,
+        url
+      }
+    }
+  `
+
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch standalone workshops content
+ */
+export async function getWorkshops() {
+  const query = `
+    *[_type == "workshops"][0] {
+      _id,
+      _type,
+      images[] {
+        _key,
+        alt,
+        asset->
+      }
     }
   `
 

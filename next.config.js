@@ -1,7 +1,10 @@
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/DC_JOHN',
+  basePath: isGithubActions ? '/Suniel_Gupta' : '',
+  assetPrefix: isGithubActions ? '/Suniel_Gupta/' : '',
   reactStrictMode: true,
   images: {
     unoptimized: true,

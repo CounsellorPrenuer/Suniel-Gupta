@@ -4,7 +4,7 @@ import { SectionProps } from '@/lib/sections/registry'
 
 export function TestimonialsSection({ heading, testimonials }: SectionProps) {
   return (
-    <section style={{ padding: '80px 20px' }}>
+    <section id="testimonials" style={{ padding: '80px 20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {heading && <h2 style={{ fontSize: '2.5rem', marginBottom: '60px', textAlign: 'center' }}>{heading}</h2>}
 

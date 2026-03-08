@@ -14,10 +14,11 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { CTASection } from '@/components/sections/CTASection'
+import { PackagesSection } from '@/components/sections/PackagesSection'
 
 export interface SectionProps {
-  _key: string
-  _type: string
+  _key?: string
+  _type?: string
   [key: string]: any
 }
 
@@ -36,6 +37,7 @@ export const sectionRegistry = {
   testimonialsSection: TestimonialsSection,
   faqSection: FAQSection,
   ctaSection: CTASection,
+  packagesSection: PackagesSection,
 } as const
 
 /**
@@ -43,7 +45,8 @@ export const sectionRegistry = {
  * @param type - The Sanity section type (e.g., "heroSection")
  * @returns React component or null if not found
  */
-export function getSectionComponent(type: string) {
+export function getSectionComponent(type?: string) {
+  if (!type) return null
   return sectionRegistry[type as keyof typeof sectionRegistry] || null
 }
 

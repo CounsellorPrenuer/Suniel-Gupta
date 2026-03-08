@@ -5,6 +5,7 @@ import { SectionProps } from '@/lib/sections/registry'
 export function FooterSection({ companyName, description, socialLinks, copyright }: SectionProps) {
   return (
     <footer
+      id="footer"
       className="footer-section"
       style={{
         padding: '60px 20px 30px',
@@ -47,7 +48,7 @@ export function FooterSection({ companyName, description, socialLinks, copyright
                       fontSize: '0.9rem',
                     }}
                   >
-                    {link.platform}
+                    {link.platform || link.label || 'Social'}
                   </a>
                 ))}
               </div>
@@ -66,7 +67,7 @@ export function FooterSection({ companyName, description, socialLinks, copyright
             fontSize: '0.9rem',
           }}
         >
-          {copyright || `Â© ${new Date().getFullYear()} ${companyName || 'Company'}. All rights reserved.`}
+          {copyright || `(c) ${new Date().getFullYear()} ${companyName || 'Company'}. All rights reserved.`}
         </div>
       </div>
     </footer>
