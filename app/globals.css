@@ -4,34 +4,37 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: clamp(14px, 1vw, 18px);
-  /* Compacted for widescreen density */
+  font-size: clamp(16px, 1.25vw, 22px);
+  /* Restored for readability and impact */
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.4;
+  line-height: 1.5;
   background: var(--color-background);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-  font-size: clamp(3rem, 4vw, 5rem);
+  font-size: clamp(3.5rem, 5vw, 6.5rem);
   margin-bottom: 1.5rem;
   line-height: 1.0;
+  font-weight: 800;
 }
 
 h2 {
-  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
   margin-bottom: 1rem;
+  font-weight: 800;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 

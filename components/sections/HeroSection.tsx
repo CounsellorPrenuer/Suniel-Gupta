@@ -104,7 +104,7 @@ export function HeroSection({ heading, subheading, backgroundImage, cta }: Secti
           backdropFilter: 'blur(8px)',
         }}
       >
-        {heading && <h1 style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', marginBottom: '20px', lineHeight: 1.0, fontWeight: 900, textShadow: '0 4px 40px rgba(0,0,0,0.6)', letterSpacing: '-0.04em' }}>{heading}</h1>}
+        {heading && <h1 style={{ fontSize: 'clamp(3.5rem, 5.5vw, 7.5rem)', marginBottom: '24px', lineHeight: 1.0, fontWeight: 900, textShadow: '0 4px 40px rgba(0,0,0,0.6)', letterSpacing: '-0.04em' }}>{heading}</h1>}
         {renderSubheadingContent(subheading)}
         {cta?.text && (
           <a

@@ -573,8 +573,8 @@ export function PackagesSection({
 
         .addons-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 15px;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          gap: 20px;
         }
 
         .addon-card {
@@ -608,24 +608,25 @@ export function PackagesSection({
         }
 
         .addon-body h4 {
-          margin: 0 0 2px;
+          margin: 0 0 4px;
           color: var(--color-primary);
-          font-size: 1.3rem;
+          font-size: 1.6rem;
           line-height: 1.2;
+          font-weight: 800;
         }
 
         .addon-price {
-          margin: 0 0 8px;
+          margin: 0 0 10px;
           color: var(--color-primary);
-          font-weight: 800;
-          font-size: 1.3rem;
+          font-weight: 900;
+          font-size: 1.5rem;
         }
 
         .addon-desc {
-          margin: 0 0 12px;
+          margin: 0 0 14px;
           color: #32456e;
-          line-height: 1.4;
-          font-size: 0.95rem;
+          line-height: 1.5;
+          font-size: 1.05rem;
         }
 
         .addon-cta {
