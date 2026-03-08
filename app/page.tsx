@@ -26,7 +26,7 @@ export default async function Home() {
 
   try {
     // Add 5-second timeout for Sanity fetch
-    const timeoutPromise = new Promise((_, reject) => 
+    const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Timeout')), 5000)
     )
     homePage = await Promise.race([getPageBySlug('home'), timeoutPromise])
@@ -161,11 +161,11 @@ export default async function Home() {
 
     const standaloneFooter = footerContent
       ? {
-          companyName: siteConfigContent?.title,
-          description: siteConfigContent?.description,
-          socialLinks: footerContent.socialLinks,
-          copyright: footerContent.copyright,
-        }
+        companyName: siteConfigContent?.title,
+        description: siteConfigContent?.description,
+        socialLinks: footerContent.socialLinks,
+        copyright: footerContent.copyright,
+      }
       : null
 
     return (
@@ -263,11 +263,11 @@ export default async function Home() {
 
     const standaloneFooter = footerContent
       ? {
-          companyName: siteConfigContent?.title,
-          description: siteConfigContent?.description,
-          socialLinks: footerContent.socialLinks,
-          copyright: footerContent.copyright,
-        }
+        companyName: siteConfigContent?.title,
+        description: siteConfigContent?.description,
+        socialLinks: footerContent.socialLinks,
+        copyright: footerContent.copyright,
+      }
       : null
 
     return (
@@ -329,7 +329,7 @@ export default async function Home() {
       </p>
       <p>
         <a
-          href="/DC-John/admin"
+          href="/Suniel_Gupta/admin"
           style={{
             display: 'inline-block',
             backgroundColor: 'var(--color-primary)',

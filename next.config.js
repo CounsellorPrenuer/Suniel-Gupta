@@ -11,6 +11,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: true,
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
