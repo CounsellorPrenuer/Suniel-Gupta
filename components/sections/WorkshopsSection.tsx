@@ -48,9 +48,9 @@ export function WorkshopsSection({ images }: SectionProps) {
   }
 
   return (
-    <section id="workshops" style={{ padding: '56px 20px' }}>
-      <div style={{ maxWidth: '1040px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2.1rem', marginBottom: '24px', textAlign: 'center', color: 'var(--color-primary)' }}>
+    <section id="workshops" style={{ padding: '100px 20px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <h2 style={{ fontSize: '3rem', marginBottom: '40px', textAlign: 'center', color: 'var(--color-primary)' }}>
           Workshops
         </h2>
 

@@ -384,7 +384,7 @@ export function PackagesSection({
         }
 
         .packages-shell {
-          max-width: 1180px;
+          max-width: 1400px;
           margin: 0 auto;
         }
 
@@ -563,8 +563,8 @@ export function PackagesSection({
         .addons-head p {
           margin: 12px auto 0;
           color: var(--color-text-secondary);
-          font-size: 1.05rem;
-          max-width: 900px;
+          font-size: 1.2rem;
+          max-width: 1000px;
         }
 
         .addons-grid {

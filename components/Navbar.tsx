@@ -58,7 +58,7 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
     >
       <div
         style={{
-          maxWidth: '1200px',
+          maxWidth: '1400px',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'space-between',
@@ -132,7 +132,7 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
                   style={{
                     color: 'var(--color-text-primary)',
                     textDecoration: 'none',
-                    fontSize: '1rem',
+                    fontSize: '1.1rem',
                     fontWeight: 500,
                     transition: 'color 0.2s',
                   }}

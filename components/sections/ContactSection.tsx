@@ -34,14 +34,14 @@ export function ContactSection({ title, description, email, phone, address, form
           }}
         />
       )}
-      <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {title && (
           <h2 style={{ fontSize: '3rem', marginBottom: '10px', textAlign: 'center', color: 'var(--color-primary)', letterSpacing: '-0.02em' }}>
             {title}
           </h2>
         )}
         {description && (
-          <p style={{ fontSize: '1.08rem', margin: '0 auto 42px', textAlign: 'center', color: 'var(--color-text-secondary)', maxWidth: '760px' }}>
+          <p style={{ fontSize: '1.2rem', margin: '0 auto 42px', textAlign: 'center', color: 'var(--color-text-secondary)', maxWidth: '900px' }}>
             {description}
           </p>
         )}
@@ -49,9 +49,9 @@ export function ContactSection({ title, description, email, phone, address, form
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: hasContactInfo ? 'repeat(auto-fit, minmax(300px, 1fr))' : '1fr',
-            gap: '22px',
-            maxWidth: hasContactInfo ? '1200px' : '600px',
+            gridTemplateColumns: hasContactInfo ? 'repeat(auto-fit, minmax(360px, 1fr))' : '1fr',
+            gap: '30px',
+            maxWidth: hasContactInfo ? '1400px' : '800px',
             margin: '0 auto',
             alignItems: 'stretch',
           }}
@@ -71,10 +71,10 @@ export function ContactSection({ title, description, email, phone, address, form
                 {email && (
                   <div>
                     <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--color-primary)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Email</strong>
-                    <a 
-                      href={`mailto:${email}`} 
-                      style={{ 
-                        color: 'var(--color-primary)', 
+                    <a
+                      href={`mailto:${email}`}
+                      style={{
+                        color: 'var(--color-primary)',
                         textDecoration: 'none',
                         fontSize: '1.05rem',
                         lineHeight: '1.2',
@@ -90,10 +90,10 @@ export function ContactSection({ title, description, email, phone, address, form
                 {phone && (
                   <div>
                     <strong style={{ display: 'block', marginBottom: '8px', color: 'var(--color-primary)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Phone</strong>
-                    <a 
-                      href={`tel:${phone}`} 
-                      style={{ 
-                        color: 'var(--color-primary)', 
+                    <a
+                      href={`tel:${phone}`}
+                      style={{
+                        color: 'var(--color-primary)',
                         textDecoration: 'none',
                         fontSize: '1.05rem',
                         lineHeight: '1.2',

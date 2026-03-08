@@ -210,10 +210,10 @@ function ServiceCard({ service }: { service: any }) {
             style={
               !expanded && isLongDescription
                 ? {
-                    maxHeight: '280px',
-                    overflow: 'hidden',
-                    position: 'relative',
-                  }
+                  maxHeight: '280px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                }
                 : undefined
             }
           >
@@ -264,7 +264,7 @@ export function ServiceSection({ title, description, services, id }: SectionProp
         color: DARK_BLUE,
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {title && (
           <h2
             style={{
@@ -279,7 +279,7 @@ export function ServiceSection({ title, description, services, id }: SectionProp
           </h2>
         )}
         {description && (
-          <div style={{ fontSize: '1.1rem', marginBottom: '60px', maxWidth: '880px', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{ fontSize: '1.2rem', marginBottom: '60px', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
             {renderRichText(description, 'center')}
           </div>
         )}
