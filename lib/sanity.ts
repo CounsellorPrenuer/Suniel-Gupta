@@ -6,7 +6,8 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'dummy'
+// Defaults keep static hosting functional even when CI secrets are missing.
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'bc4fmw79'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const apiVersion = '2024-01-01'
 
