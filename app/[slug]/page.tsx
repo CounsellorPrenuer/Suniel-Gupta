@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: PageParams }) {
 
   try {
     // Add 5-second timeout for Sanity fetch
-    const timeoutPromise = new Promise((_, reject) => 
+    const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Timeout')), 5000)
     )
     page = await Promise.race([getPageBySlug(params.slug), timeoutPromise])
@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: PageParams }) {
   }
 
   // Log fetched sections for debugging
-  console.log(`[Page: ${params.slug}] Fetched ${page.sections?.length || 0} sections:`, 
+  console.log(`[Page: ${params.slug}] Fetched ${page.sections?.length || 0} sections:`,
     page.sections?.map((s: any) => s._type) || [])
 
   // Separate footer from other sections to ensure it renders last
@@ -48,10 +48,10 @@ export default async function Page({ params }: { params: PageParams }) {
             console.error(`[RENDERING ERROR] No component found for section type: ${section._type}`)
             // Render error placeholder in development
             return (
-              <div key={section._key || idx} style={{ 
-                padding: '20px', 
-                margin: '20px', 
-                backgroundColor: 'var(--color-surface)', 
+              <div key={section._key || idx} style={{
+                padding: '20px',
+                margin: '20px',
+                backgroundColor: 'var(--color-surface)',
                 border: '2px solid var(--color-primary)',
                 borderRadius: '4px'
               }}>
@@ -94,17 +94,18 @@ export default async function Page({ params }: { params: PageParams }) {
 export async function generateStaticParams() {
   try {
     const pages = await getAllPageSlugs()
+    if (!pages || pages.length === 0) {
+      return [{ slug: '_empty' }]
+    }
     return pages.map((page: any) => ({
       slug: page.slug,
     }))
   } catch (error) {
-    console.log('[generateStaticParams] Sanity unreachable, returning empty params')
-    return []
+    console.log('[generateStaticParams] Sanity unreachable, returning fallback params')
+    // Next.js export requires at least one param, or dynamicParams = false
+    return [{ slug: '_empty' }]
   }
 }
 
-/**
- * Enable Incremental Static Regeneration (ISR)
- * Revalidate every 60 seconds
- */
-export const revalidate = 60
+export const dynamicParams = false;
+
