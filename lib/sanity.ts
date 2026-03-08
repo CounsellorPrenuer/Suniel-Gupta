@@ -6,13 +6,9 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'dummy'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const apiVersion = '2024-01-01'
-
-if (!projectId) {
-  throw new Error('NEXT_PUBLIC_SANITY_PROJECT_ID is not set')
-}
 
 export const sanityClient = createClient({
   projectId,
