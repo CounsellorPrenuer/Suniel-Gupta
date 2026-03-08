@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
+const repoBasePath = '/Suniel-Gupta'
+
 const nextConfig = {
   output: 'export',
+  basePath: repoBasePath,
+  assetPrefix: `${repoBasePath}/`,
   eslint: {
     ignoreDuringBuilds: true,
   },
