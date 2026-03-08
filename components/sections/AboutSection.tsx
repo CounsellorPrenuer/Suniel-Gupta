@@ -87,7 +87,7 @@ export function AboutSection({ title, description, image, id, sectionHeading, se
           max-width: 2200px;
           width: 95%;
           margin: 0 auto;
-          padding: 100px 0;
+          padding: 60px 0;
         }
 
         .about-founder-head {
@@ -111,7 +111,7 @@ export function AboutSection({ title, description, image, id, sectionHeading, se
 
         .about-founder-grid {
           display: grid;
-          grid-template-columns: minmax(400px, 1.2fr) minmax(350px, 1fr);
+          grid-template-columns: minmax(450px, 1.4fr) minmax(400px, 1fr);
           gap: 60px;
           align-items: center;
         }

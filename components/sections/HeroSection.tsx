@@ -83,28 +83,28 @@ export function HeroSection({ heading, subheading, backgroundImage, cta }: Secti
         backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        minHeight: '70vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         color: 'var(--color-background)',
         textAlign: 'center',
-        padding: '0 20px',
+        padding: '60px 20px',
       }}
     >
       <div
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          padding: 'clamp(100px, 10vh, 180px) clamp(40px, 5vw, 100px)',
+          padding: '80px 60px',
           borderRadius: '40px',
-          maxWidth: '2200px',
+          maxWidth: '1800px',
           width: '95%',
           margin: '0 auto',
           boxShadow: '0 40px 80px rgba(0,0,0,0.6)',
           backdropFilter: 'blur(8px)',
         }}
       >
-        {heading && <h1 style={{ fontSize: 'clamp(5rem, 8vw, 11rem)', marginBottom: '40px', lineHeight: 0.9, fontWeight: 900, textShadow: '0 4px 40px rgba(0,0,0,0.6)', letterSpacing: '-0.04em' }}>{heading}</h1>}
+        {heading && <h1 style={{ fontSize: 'clamp(4rem, 6vw, 8rem)', marginBottom: '30px', lineHeight: 1.0, fontWeight: 900, textShadow: '0 4px 40px rgba(0,0,0,0.6)', letterSpacing: '-0.04em' }}>{heading}</h1>}
         {renderSubheadingContent(subheading)}
         {cta?.text && (
           <a

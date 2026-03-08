@@ -387,7 +387,7 @@ export function PackagesSection({
           max-width: 2200px;
           width: 95%;
           margin: 0 auto;
-          padding: 120px 0;
+          padding: 60px 0;
         }
 
         .packages-head {
@@ -438,9 +438,9 @@ export function PackagesSection({
 
         .plans-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           justify-content: center;
-          gap: 40px;
+          gap: 20px;
         }
 
         .plan-card {
