@@ -4,7 +4,6 @@ const isGithubActions = process.env.GITHUB_ACTIONS || false;
 const nextConfig = {
   output: 'export',
   basePath: isGithubActions ? '/Suniel_Gupta' : '',
-  assetPrefix: isGithubActions ? '/Suniel_Gupta/' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
