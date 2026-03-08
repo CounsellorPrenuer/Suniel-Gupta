@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description: 'A reusable section-based website template powered by Sanity CMS',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default async function RootLayout({
   children,
 }: {
@@ -18,7 +23,7 @@ export default async function RootLayout({
   let siteConfig = null
 
   try {
-    const timeoutPromise = new Promise((_, reject) => 
+    const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Timeout')), 3000)
     )
     navbar = await Promise.race([getNavbar(), timeoutPromise])
@@ -27,7 +32,7 @@ export default async function RootLayout({
   }
 
   try {
-    const timeoutPromise = new Promise((_, reject) => 
+    const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Timeout')), 3000)
     )
     siteConfig = await Promise.race([getSiteConfig(), timeoutPromise])
@@ -50,7 +55,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body 
+      <body
         style={{
           margin: 0,
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
