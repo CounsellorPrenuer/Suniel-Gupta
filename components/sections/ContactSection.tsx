@@ -34,7 +34,7 @@ export function ContactSection({ title, description, email, phone, address, form
           }}
         />
       )}
-      <div style={{ maxWidth: '2000px', width: '95%', margin: '0 auto', padding: '100px 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1400px', width: '95%', margin: '0 auto', padding: '80px 0', position: 'relative', zIndex: 1 }}>
         {title && (
           <h2 style={{ fontSize: '3rem', marginBottom: '10px', textAlign: 'center', color: 'var(--color-primary)', letterSpacing: '-0.02em' }}>
             {title}
