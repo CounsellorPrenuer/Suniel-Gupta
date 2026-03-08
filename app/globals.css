@@ -4,8 +4,8 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: clamp(16px, 1.1vw, 22px);
-  /* Moderated for better vertical density */
+  font-size: clamp(14px, 1vw, 18px);
+  /* Compacted for widescreen density */
 }
 
 body {
@@ -19,18 +19,18 @@ body {
 }
 
 h1 {
-  font-size: clamp(3.5rem, 5vw, 6rem);
+  font-size: clamp(3rem, 4vw, 5rem);
   margin-bottom: 1.5rem;
   line-height: 1.0;
 }
 
 h2 {
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3vw, 3.5rem);
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 2vw, 2rem);
   margin-bottom: 1rem;
 }
 
