@@ -1,7 +1,7 @@
 const nextConfig = {
   output: 'export',
-  basePath: '/Suniel_Gupta',
-  assetPrefix: '/Suniel_Gupta/',
+  basePath: process.env.NODE_ENV === 'production' ? '/Suniel_Gupta' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Suniel_Gupta/' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },

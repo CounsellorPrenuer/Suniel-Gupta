@@ -67,7 +67,7 @@ function renderSubheadingContent(subheading: any) {
   }
 
   return (
-    <div style={{ fontSize: '1.5rem', marginBottom: '40px', maxWidth: '900px', margin: '0 auto 30px' }}>
+    <div style={{ fontSize: '1.8rem', marginBottom: '50px', maxWidth: '1200px', margin: '0 auto 40px', lineHeight: 1.6 }}>
       {nodes}
     </div>
   )
@@ -94,13 +94,14 @@ export function HeroSection({ heading, subheading, backgroundImage, cta }: Secti
       <div
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.45)',
-          padding: '60px 40px',
-          borderRadius: '12px',
-          maxWidth: '1200px',
-          margin: '0 20px',
+          padding: '80px 60px',
+          borderRadius: '16px',
+          maxWidth: '1400px',
+          margin: '0 40px',
+          flex: 1,
         }}
       >
-        {heading && <h1 style={{ fontSize: '4.5rem', marginBottom: '24px', lineHeight: 1.1, fontWeight: 800 }}>{heading}</h1>}
+        {heading && <h1 style={{ fontSize: '6rem', marginBottom: '32px', lineHeight: 1.05, fontWeight: 900, textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>{heading}</h1>}
         {renderSubheadingContent(subheading)}
         {cta?.text && (
           <a

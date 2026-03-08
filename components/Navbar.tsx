@@ -58,7 +58,7 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
     >
       <div
         style={{
-          maxWidth: '1400px',
+          maxWidth: '1600px',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'space-between',

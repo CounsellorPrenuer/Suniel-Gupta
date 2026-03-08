@@ -84,7 +84,7 @@ export function AboutSection({ title, description, image, id, sectionHeading, se
         }
 
         .about-founder-shell {
-          max-width: 1400px;
+          max-width: 1600px;
           margin: 0 auto;
         }
 
