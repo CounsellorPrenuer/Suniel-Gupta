@@ -327,20 +327,8 @@ export default async function Home() {
       <p style={{ fontSize: '1.1rem', color: 'var(--color-text-secondary)', maxWidth: '600px', margin: '20px auto' }}>
         This is a section-based website template powered by Sanity CMS.
       </p>
-      <p>
-        <a
-          href="/Suniel_Gupta/admin"
-          style={{
-            display: 'inline-block',
-            backgroundColor: 'var(--color-primary)',
-            color: 'var(--color-background)',
-            padding: '12px 30px',
-            borderRadius: '4px',
-            textDecoration: 'none',
-          }}
-        >
-          Manage Content in Sanity
-        </a>
+      <p style={{ color: 'var(--color-text-secondary)' }}>
+        Manage content from your Sanity Studio dashboard.
       </p>
       <p style={{ marginTop: '40px', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
         Create a page with slug "home" in Sanity to get started.

@@ -1,9 +1,6 @@
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: isGithubActions ? '/Suniel_Gupta' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },

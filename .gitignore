@@ -14,6 +14,7 @@ build/
 # Dependencies
 node_modules/
 yarn.lock
+tsconfig.tsbuildinfo
 
 # Sanity - exclude from git
 sanity/
