@@ -384,8 +384,10 @@ export function PackagesSection({
         }
 
         .packages-shell {
-          max-width: 1800px;
+          max-width: 2200px;
+          width: 95%;
           margin: 0 auto;
+          padding: 120px 0;
         }
 
         .packages-head {

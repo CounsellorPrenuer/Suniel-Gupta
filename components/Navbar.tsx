@@ -58,7 +58,8 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
     >
       <div
         style={{
-          maxWidth: '1800px',
+          maxWidth: '2200px',
+          width: '95%',
           margin: '0 auto',
           display: 'flex',
           justifyContent: 'space-between',
@@ -82,8 +83,8 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
               alt={logoAlt}
               style={{
                 height: 'auto',
-                width: 'min(450px, 75vw)',
-                maxHeight: '100px',
+                width: 'min(550px, 80vw)',
+                maxHeight: '140px',
                 objectFit: 'contain',
                 display: 'block',
               }}

@@ -264,7 +264,7 @@ export function ServiceSection({ title, description, services, id }: SectionProp
         color: DARK_BLUE,
       }}
     >
-      <div style={{ maxWidth: '1800px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '2200px', width: '95%', margin: '0 auto', padding: '120px 0' }}>
         {title && (
           <h2
             style={{
