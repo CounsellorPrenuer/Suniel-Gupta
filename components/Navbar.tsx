@@ -82,8 +82,8 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
               alt={logoAlt}
               style={{
                 height: 'auto',
-                width: 'min(340px, 68vw)',
-                maxHeight: '72px',
+                width: 'min(450px, 75vw)',
+                maxHeight: '100px',
                 objectFit: 'contain',
                 display: 'block',
               }}
@@ -132,7 +132,7 @@ export function Navbar({ logo, logoImage, links }: NavbarProps) {
                   style={{
                     color: 'var(--color-text-primary)',
                     textDecoration: 'none',
-                    fontSize: '1.1rem',
+                    fontSize: '1.25rem',
                     fontWeight: 500,
                     transition: 'color 0.2s',
                   }}

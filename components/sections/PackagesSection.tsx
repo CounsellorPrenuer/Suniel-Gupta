@@ -436,9 +436,9 @@ export function PackagesSection({
 
         .plans-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(290px, 420px));
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
           justify-content: center;
-          gap: 22px;
+          gap: 40px;
         }
 
         .plan-card {
@@ -480,14 +480,15 @@ export function PackagesSection({
 
         .plan-title {
           margin: 0;
-          font-size: 2rem;
-          line-height: 1.15;
+          font-size: 3rem;
+          line-height: 1.1;
           color: var(--color-primary);
+          font-weight: 800;
         }
 
         .plan-price {
-          margin: 10px 0 12px;
-          font-size: 2.3rem;
+          margin: 15px 0 20px;
+          font-size: 3.5rem;
           line-height: 1;
           color: var(--color-primary);
           font-weight: 900;

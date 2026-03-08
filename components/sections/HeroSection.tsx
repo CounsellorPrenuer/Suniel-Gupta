@@ -83,26 +83,27 @@ export function HeroSection({ heading, subheading, backgroundImage, cta }: Secti
         backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '85vh',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         color: 'var(--color-background)',
         textAlign: 'center',
-        padding: '100px 20px',
+        padding: '0 20px',
       }}
     >
       <div
         style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          padding: '100px 60px',
-          borderRadius: '24px',
-          maxWidth: '1600px',
-          width: '95%',
+          backgroundColor: 'rgba(0, 0, 0, 0.55)',
+          padding: '140px 80px',
+          borderRadius: '32px',
+          maxWidth: '1800px',
+          width: '98%',
           margin: '0 auto',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
         }}
       >
-        {heading && <h1 style={{ fontSize: '7rem', marginBottom: '32px', lineHeight: 1.0, fontWeight: 900, textShadow: '0 4px 20px rgba(0,0,0,0.4)' }}>{heading}</h1>}
+        {heading && <h1 style={{ fontSize: '9rem', marginBottom: '40px', lineHeight: 0.9, fontWeight: 900, textShadow: '0 4px 30px rgba(0,0,0,0.5)', letterSpacing: '-0.03em' }}>{heading}</h1>}
         {renderSubheadingContent(subheading)}
         {cta?.text && (
           <a

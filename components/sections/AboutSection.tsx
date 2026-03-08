@@ -109,9 +109,9 @@ export function AboutSection({ title, description, image, id, sectionHeading, se
 
         .about-founder-grid {
           display: grid;
-          grid-template-columns: minmax(320px, 1.08fr) minmax(280px, 1fr);
-          gap: 30px;
-          align-items: stretch;
+          grid-template-columns: minmax(400px, 1.2fr) minmax(350px, 1fr);
+          gap: 60px;
+          align-items: center;
         }
 
         .about-founder-card {

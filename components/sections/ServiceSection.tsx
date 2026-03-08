@@ -152,7 +152,7 @@ function ServiceCard({ service }: { service: any }) {
         boxShadow: '0 4px 16px rgba(13, 42, 99, 0.12)',
         border: `1px solid ${SUNNY_YELLOW}`,
         width: '100%',
-        maxWidth: '380px',
+        maxWidth: '520px',
         margin: '0 auto',
         textAlign: 'left',
       }}
@@ -288,8 +288,8 @@ export function ServiceSection({ title, description, services, id }: SectionProp
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 380px))',
-              gap: '30px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+              gap: '40px',
               justifyContent: 'center',
               justifyItems: 'center',
             }}
