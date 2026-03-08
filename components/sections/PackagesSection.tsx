@@ -384,10 +384,10 @@ export function PackagesSection({
         }
 
         .packages-shell {
-          max-width: 2200px;
+          max-width: 2000px;
           width: 95%;
           margin: 0 auto;
-          padding: 120px 0;
+          padding: 80px 0;
         }
 
         .packages-head {
@@ -444,7 +444,7 @@ export function PackagesSection({
         }
 
         .plan-card {
-          padding: 2.5rem;
+          padding: 2rem;
           background: white;
           border-radius: 20px;
           display: flex;
@@ -573,18 +573,18 @@ export function PackagesSection({
 
         .addons-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-          gap: 30px;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 25px;
         }
 
         .addon-card {
           display: grid;
-          grid-template-columns: 200px 1fr;
+          grid-template-columns: 160px 1fr;
           border-radius: 16px;
           overflow: hidden;
           background: #ffffff;
           border: 1px solid #f0f0f0;
-          min-height: 240px;
+          min-height: 200px;
           box-shadow: 0 10px 25px rgba(13, 42, 99, 0.06);
         }
 

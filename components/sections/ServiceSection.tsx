@@ -151,10 +151,10 @@ function ServiceCard({ service }: { service: any }) {
         boxShadow: '0 4px 16px rgba(13, 42, 99, 0.12)',
         border: `1px solid ${SUNNY_YELLOW}`,
         width: '100%',
-        maxWidth: '520px',
+        maxWidth: '450px',
         margin: '0 auto',
         textAlign: 'left',
-        padding: '50px',
+        padding: '40px',
       }}
     >
       {iconUrl && (
@@ -264,7 +264,7 @@ export function ServiceSection({ title, description, services, id }: SectionProp
         color: DARK_BLUE,
       }}
     >
-      <div style={{ maxWidth: '2200px', width: '95%', margin: '0 auto', padding: '120px 0' }}>
+      <div style={{ maxWidth: '2000px', width: '95%', margin: '0 auto', padding: '80px 0' }}>
         {title && (
           <h2
             style={{
