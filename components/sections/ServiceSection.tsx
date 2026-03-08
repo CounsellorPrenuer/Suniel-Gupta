@@ -146,7 +146,6 @@ function ServiceCard({ service }: { service: any }) {
   return (
     <div
       style={{
-        padding: '30px',
         backgroundColor: PEARL_WHITE,
         borderRadius: '12px',
         boxShadow: '0 4px 16px rgba(13, 42, 99, 0.12)',
