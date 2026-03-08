@@ -87,7 +87,7 @@ export function AboutSection({ title, description, image, id, sectionHeading, se
           max-width: 2200px;
           width: 95%;
           margin: 0 auto;
-          padding: 40px 0;
+          padding: 120px 0;
         }
 
         .about-founder-head {
