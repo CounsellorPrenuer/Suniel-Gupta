@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SANITY CLIENT CONFIGURATION
  * Initializes the Sanity client for fetching content
  */
@@ -33,9 +33,19 @@ export function urlForImage(source: any) {
  */
 export async function getPageBySlug(slug: string) {
   const query = `
-    *[_type == "page" && slug.current == $slug][0] {
+    *[_type in ["page", "service"] && (slug.current == $slug || _id == $slug)][0] {
       _id,
+      _type,
       title,
+      description,
+      keyBenefits,
+      targetAudience,
+      duration,
+      format,
+      image {
+        ...,
+        asset->
+      },
       slug,
       seo,
       sections[] {
@@ -54,8 +64,9 @@ export async function getPageBySlug(slug: string) {
  */
 export async function getAllPageSlugs() {
   const query = `
-    *[_type == "page"] {
-      "slug": slug.current
+    *[_type in ["page", "service"]] {
+      "slug": slug.current,
+      _id
     }
   `
 
@@ -172,6 +183,25 @@ export async function getHero() {
 }
 
 /**
+ * Fetch standout homepage content (Hero)
+ */
+export async function getHomepage() {
+  const query = `
+    *[_type == "homepage"][0] {
+      _id,
+      brandName,
+      tagline,
+      subTagline,
+      description,
+      cta,
+      stats
+    }
+  `
+  return sanityClient.fetch(query)
+}
+
+
+/**
  * Fetch standalone about content
  */
 export async function getAbout() {
@@ -185,6 +215,7 @@ export async function getAbout() {
       description,
       quote,
       highlights,
+      videoUrl,
       image {
         ...,
         asset->
@@ -203,8 +234,12 @@ export async function getServices() {
     *[_type == "service"] | order(order asc) {
       _id,
       title,
+      "slug": slug.current,
       description,
-      icon,
+      keyBenefits,
+      targetAudience,
+      duration,
+      format,
       image {
         ...,
         asset->
@@ -292,9 +327,49 @@ export async function getWorkshops() {
         _key,
         alt,
         asset->
+      },
+      videos[] {
+        _key,
+        title,
+        url,
+        "fileUrl": videoFile.asset->url
       }
     }
   `
 
+  return sanityClient.fetch(query)
+}
+/**
+ * Fetch standalone discovery call content
+ */
+export async function getDiscoveryCall() {
+  const query = `
+    *[_type == "discoveryCall"][0] {
+      _id,
+      title,
+      description,
+      ctaText,
+      ctaLink,
+      backgroundImage {
+        ...,
+        asset->
+      }
+    }
+  `
+  return sanityClient.fetch(query)
+}
+
+/**
+ * Fetch all videos
+ */
+export async function getVideos() {
+  const query = `
+    *[_type == "video"] | order(order asc) {
+      _id,
+      title,
+      url,
+      order
+    }
+  `
   return sanityClient.fetch(query)
 }

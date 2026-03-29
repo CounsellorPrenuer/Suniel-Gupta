@@ -1,247 +1,144 @@
-﻿'use client'
+'use client'
 
-import { SectionProps } from '@/lib/sections/registry'
 import { urlForImage } from '@/lib/sanity'
 import Image from 'next/image'
+import { renderRichText } from '@/lib/richText'
 
-const fallbackIcons = ['heart', 'bar', 'spark', 'user']
-
-function iconFromValue(value: string | undefined, index: number) {
-  const safe = (value || '').trim().toLowerCase()
-  if (safe) return safe
-  return fallbackIcons[index % fallbackIcons.length]
+interface AboutProps {
+  id?: string
+  sectionHeading?: string
+  sectionSubheading?: string
+  title?: string
+  description?: string
+  videoUrl?: string
+  image?: any
+  quote?: string
+  highlights?: any[]
 }
 
-function iconGlyph(icon: string) {
-  if (icon === 'heart') return 'o'
-  if (icon === 'bar') return '[]'
-  if (icon === 'spark') return '*'
-  if (icon === 'user') return 'u'
-  return icon
+function getYouTubeId(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+  const match = url.match(regExp)
+  return (match && match[2].length === 11) ? match[2] : null
 }
 
-export function AboutSection({ title, description, image, id, sectionHeading, sectionSubheading, quote, highlights }: SectionProps) {
+export function AboutSection({ 
+  title, 
+  description, 
+  videoUrl, 
+  image, 
+  id, 
+  sectionHeading 
+}: AboutProps) {
   const imageUrl = image ? urlForImage(image).width(800).height(600).url() : null
-  const altText = image?.alt || title || 'About section image'
-  const safeHighlights = Array.isArray(highlights) ? highlights : []
+  const videoId = videoUrl ? getYouTubeId(videoUrl) : null
 
   return (
-    <section id={id} className="about-founder-wrap">
-      <div className="about-founder-shell">
-        <header className="about-founder-head">
-          <h2>{sectionHeading || 'Meet the Founder'}</h2>
-          {sectionSubheading && <p>{sectionSubheading}</p>}
-        </header>
-
-        <div className="about-founder-grid">
-          <article className="about-founder-card">
-            {title && <h3>{title}</h3>}
-            {description && <p className="about-founder-body">{description}</p>}
-
-            {quote && (
-              <blockquote className="about-founder-quote">
-                {quote}
-              </blockquote>
+    <section id={id || 'about'} style={{ backgroundColor: '#ffffff', padding: '80px 20px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div className="about-grid">
+          {/* Left Column: Text */}
+          <div className="about-text">
+            {sectionHeading && (
+              <h2 style={{ 
+                fontFamily: "'Outfit', sans-serif", 
+                fontSize: '1rem', 
+                color: '#0d2a63', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.1em',
+                marginBottom: '1rem' 
+              }}>
+                {sectionHeading}
+              </h2>
+            )}
+            
+            {title && (
+              <h3 style={{ 
+                fontFamily: "'Outfit', sans-serif", 
+                fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', // Reduced size
+                color: '#0d2a63', 
+                fontWeight: 800,
+                lineHeight: 1.2,
+                marginBottom: '2rem' 
+              }}>
+                {title}
+              </h3>
             )}
 
-            {safeHighlights.length > 0 && (
-              <div className="about-founder-cred">
-                <h4>Credentials &amp; Expertise</h4>
-                <ul>
-                  {safeHighlights.map((item: any, idx: number) => {
-                    const icon = iconFromValue(item?.icon, idx)
-                    return (
-                      <li key={item?._key || idx}>
-                        <span className={`about-icon about-icon-${icon}`}>{iconGlyph(icon)}</span>
-                        <span>{item?.text}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
+            <div style={{ 
+              fontFamily: "'Source Serif 4', serif", 
+              fontSize: '1.05rem', // Reduced size
+              lineHeight: 1.7, 
+              color: '#4a4a4a'
+            }}>
+              {renderRichText(description)}
+            </div>
+          </div>
+
+          {/* Right Column: Video or Image */}
+          <div className="about-visual">
+            {videoId ? (
+              <div className="video-container">
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title="About Section Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '12px',
+                    boxShadow: '0 20px 40px rgba(13, 42, 99, 0.15)'
+                  }}
+                />
+              </div>
+            ) : imageUrl && (
+              <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(13, 42, 99, 0.15)' }}>
+                <Image
+                  src={imageUrl}
+                  alt={title || 'About Image'}
+                  width={800}
+                  height={600}
+                  layout="responsive"
+                  objectFit="cover"
+                />
               </div>
             )}
-          </article>
-
-          {imageUrl && (
-            <div className="about-founder-image">
-              <Image
-                src={imageUrl}
-                alt={altText}
-                width={760}
-                height={900}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </div>
-          )}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
-        .about-founder-wrap {
-          padding: 88px 20px;
-          background: radial-gradient(1000px 380px at 50% 0%, rgba(13, 42, 99, 0.12), transparent 70%),
-            linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
-        }
-
-        .about-founder-shell {
-          max-width: 1400px;
-          width: 95%;
-          margin: 0 auto;
-          padding: 60px 0;
-        }
-
-        .about-founder-head {
-          text-align: center;
-          margin-bottom: 34px;
-        }
-
-        .about-founder-head h2 {
-          margin: 0;
-          color: var(--color-primary);
-          font-size: clamp(2rem, 4vw, 3rem);
-          letter-spacing: -0.02em;
-        }
-
-        .about-founder-head p {
-          margin: 12px auto 0;
-          max-width: 780px;
-          color: var(--color-text-secondary);
-          font-size: 1.08rem;
-        }
-
-        .about-founder-grid {
+        .about-grid {
           display: grid;
-          grid-template-columns: minmax(450px, 1.4fr) minmax(400px, 1fr);
+          grid-template-columns: 1.2fr 1fr;
           gap: 60px;
-          align-items: center;
+          align-items: flex-start;
         }
 
-        .about-founder-card {
-          background: var(--color-background);
-          border: 1px solid var(--color-border);
-          border-radius: 20px;
-          box-shadow: 0 18px 44px rgba(13, 42, 99, 0.12);
-          padding: 28px;
-        }
-
-        .about-founder-card h3 {
-          margin: 0 0 12px;
-          color: var(--color-primary);
-          font-size: 2rem;
-          line-height: 1.15;
-        }
-
-        .about-founder-body {
-          margin: 0;
-          white-space: pre-line;
-          color: var(--color-text-secondary);
-          line-height: 1.75;
-        }
-
-        .about-founder-quote {
-          margin: 24px 0 0;
-          padding: 10px 0 10px 14px;
-          border-left: 3px solid var(--color-border);
-          color: var(--color-primary);
-          font-style: italic;
-          font-weight: 600;
-        }
-
-        .about-founder-cred {
-          margin-top: 24px;
-        }
-
-        .about-founder-cred h4 {
-          margin: 0 0 12px;
-          color: var(--color-primary);
-          font-size: 1.15rem;
-        }
-
-        .about-founder-cred ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          display: grid;
-          gap: 9px;
-        }
-
-        .about-founder-cred li {
-          display: grid;
-          grid-template-columns: 28px 1fr;
-          gap: 10px;
-          align-items: center;
-          color: var(--color-text-secondary);
-          line-height: 1.5;
-        }
-
-        .about-icon {
-          height: 28px;
-          width: 28px;
-          border-radius: 50%;
-          display: inline-grid;
-          place-items: center;
-          font-size: 0.7rem;
-          font-weight: 700;
-        }
-
-        .about-icon-heart {
-          background: #ffe9ad;
-          color: var(--color-primary);
-        }
-
-        .about-icon-bar {
-          background: #fff2c7;
-          color: var(--color-primary);
-        }
-
-        .about-icon-spark {
-          background: #ffe08a;
-          color: var(--color-primary);
-        }
-
-        .about-icon-user {
-          background: #ffe9ad;
-          color: var(--color-primary);
-        }
-
-        .about-founder-image {
-          border-radius: 20px;
+        .video-container {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+          height: 0;
           overflow: hidden;
-          min-height: 520px;
-          box-shadow: 0 20px 44px rgba(13, 42, 99, 0.2);
-          border: 1px solid var(--color-border);
+          width: 100%;
         }
 
-        @media (max-width: 940px) {
-          .about-founder-grid {
+        @media (max-width: 968px) {
+          .about-grid {
             grid-template-columns: 1fr;
+            gap: 40px;
           }
-
-          .about-founder-image {
-            min-height: 420px;
-            order: -1;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .about-founder-wrap {
-            padding: 68px 16px;
-          }
-
-          .about-founder-card {
-            padding: 22px;
-          }
-
-          .about-founder-card h3 {
-            font-size: 1.6rem;
-          }
-
-          .about-founder-image {
-            min-height: 340px;
+          
+          .about-visual {
+            order: 2; /* Video below text on mobile */
           }
         }
       `}</style>
     </section>
   )
 }
-

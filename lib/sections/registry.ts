@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SECTION REGISTRY
  * Maps section types to React components
  * Used by the page renderer to dynamically render sections
@@ -14,7 +14,10 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { CTASection } from '@/components/sections/CTASection'
+import { VideoSection } from '@/components/sections/VideoSection'
+import { DiscoveryCallSection } from '@/components/sections/DiscoveryCallSection'
 import { PackagesSection } from '@/components/sections/PackagesSection'
+import { WorkshopsSection } from '@/components/sections/WorkshopsSection'
 
 export interface SectionProps {
   _key?: string
@@ -38,6 +41,9 @@ export const sectionRegistry = {
   faqSection: FAQSection,
   ctaSection: CTASection,
   packagesSection: PackagesSection,
+  videoSection: VideoSection,
+  discoveryCallSection: DiscoveryCallSection,
+  workshopsSection: WorkshopsSection,
 } as const
 
 /**

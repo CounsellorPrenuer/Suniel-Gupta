@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import React from 'react'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
@@ -40,28 +40,23 @@ export default async function RootLayout({
     console.log('[Layout] SiteConfig fetch failed, using defaults')
   }
 
-  // Define CSS variables from Sanity with sensible defaults
+  // Define CSS variables from Sanity with sensible brand defaults
   const cssVars = {
-    '--color-primary': siteConfig?.primaryColor || '#667eea',
-    '--color-primary-hover': siteConfig?.primaryHoverColor || '#5568d3',
-    '--color-background': siteConfig?.backgroundColor || '#ffffff',
-    '--color-surface': siteConfig?.surfaceColor || '#f8f9fa',
-    '--color-text-primary': siteConfig?.textPrimary || '#333333',
-    '--color-text-secondary': siteConfig?.textSecondary || '#666666',
-    '--color-border': siteConfig?.borderColor || '#e0e0e0',
-    '--color-footer-background': siteConfig?.footerBackground || '#1a1a1a',
+    '--color-primary': siteConfig?.primaryColor || '#0d2a63',
+    '--color-primary-hover': siteConfig?.primaryHoverColor || '#081a3d',
+    '--color-background': siteConfig?.backgroundColor || '#fffdf5',
+    '--color-surface': siteConfig?.surfaceColor || '#ffffff',
+    '--color-text-primary': siteConfig?.textPrimary || '#0d2a63',
+    '--color-text-secondary': siteConfig?.textSecondary || '#4a4a4a',
+    '--color-accent': siteConfig?.accentColor || '#f7c948',
+    '--color-border': siteConfig?.borderColor || '#e2e8f0',
+    '--color-footer-background': siteConfig?.footerBackground || '#0d2a63',
     '--color-footer-text': siteConfig?.footerText || '#ffffff',
   } as React.CSSProperties
 
   return (
     <html lang="en">
-      <body
-        style={{
-          margin: 0,
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-          ...cssVars
-        }}
-      >
+      <body style={cssVars}>
         <Navbar logo={siteConfig?.logo} logoImage={siteConfig?.logoImage} links={navbar?.links} />
         {children}
       </body>

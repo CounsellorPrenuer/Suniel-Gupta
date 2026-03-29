@@ -1,160 +1,37 @@
-﻿'use client'
+'use client'
 
-import { useState } from 'react'
+import React from 'react'
 import { SectionProps } from '@/lib/sections/registry'
 import { urlForImage } from '@/lib/sanity'
 import Image from 'next/image'
+import { renderRichText } from '@/lib/richText'
 
-const DARK_BLUE = '#0d2a63'
-const PEARL_WHITE = '#fffdf5'
-const SUNNY_YELLOW = '#f7c948'
-const BODY_DARK = '#1f355f'
-
-function renderRichText(content: any, textAlign: 'left' | 'center' = 'left') {
-  if (!content) return null
-
-  if (typeof content === 'string') {
-    return <p style={{ color: BODY_DARK, lineHeight: '1.6', textAlign, whiteSpace: 'pre-line' }}>{content}</p>
-  }
-
-  if (!Array.isArray(content)) return null
-
-  const renderInline = (children: any[]) =>
-    children.map((child: any, childIdx: number) => {
-      if (child?._type !== 'span') return null
-      const isBold = Array.isArray(child.marks) && child.marks.includes('strong')
-      return (
-        <span key={child._key || childIdx} style={{ fontWeight: isBold ? 700 : 400 }}>
-          {child.text}
-        </span>
-      )
-    })
-
-  const nodes: any[] = []
-  let idx = 0
-
-  while (idx < content.length) {
-    const block = content[idx]
-
-    if (block?._type === 'image') {
-      const imageUrl = block?.asset
-        ? urlForImage(block).width(1000).height(700).fit('max').ignoreImageParams().url()
-        : null
-      if (imageUrl) {
-        nodes.push(
-          <div
-            key={block._key || `img-${idx}`}
-            style={{
-              margin: '0 0 1em',
-              borderRadius: '10px',
-              overflow: 'hidden',
-              backgroundColor: '#ffffff',
-              border: '1px solid #d9d9d9',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: '180px',
-            }}
-          >
-            <Image
-              src={imageUrl}
-              alt={block?.alt || 'Description image'}
-              width={1000}
-              height={700}
-              style={{
-                maxWidth: '100%',
-                width: '100%',
-                maxHeight: '320px',
-                height: 'auto',
-                display: 'block',
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-        )
-      }
-      idx += 1
-      continue
-    }
-
-    if (block?._type !== 'block' || !Array.isArray(block.children)) {
-      idx += 1
-      continue
-    }
-
-    if (block.listItem === 'bullet') {
-      const listItems: any[] = []
-      while (idx < content.length) {
-        const listBlock = content[idx]
-        if (listBlock?._type !== 'block' || listBlock.listItem !== 'bullet' || !Array.isArray(listBlock.children)) {
-          break
-        }
-        listItems.push(listBlock)
-        idx += 1
-      }
-
-      nodes.push(
-        <ul key={block._key || `list-${idx}`} style={{ margin: '0 0 0.8em', paddingLeft: '1.2em', textAlign: 'left' }}>
-          {listItems.map((item, itemIdx) => (
-            <li key={item._key || itemIdx} style={{ marginBottom: '0.35em', lineHeight: 1.5, color: BODY_DARK }}>
-              {renderInline(item.children)}
-            </li>
-          ))}
-        </ul>
-      )
-      continue
-    }
-
-    nodes.push(
-      <p key={block._key || idx} style={{ margin: '0 0 0.8em', lineHeight: 1.6, color: BODY_DARK, textAlign }}>
-        {renderInline(block.children)}
-      </p>
-    )
-    idx += 1
-  }
-
-  return <div>{nodes}</div>
-}
-
-function getContentLength(content: any) {
-  if (!content) return 0
-  if (typeof content === 'string') return content.length
-  if (!Array.isArray(content)) return 0
-
-  return content.reduce((total: number, block: any) => {
-    if (block?._type === 'block' && Array.isArray(block.children)) {
-      const blockText = block.children
-        .filter((child: any) => child?._type === 'span')
-        .map((child: any) => child.text || '')
-        .join('')
-      return total + blockText.length
-    }
-    return total
-  }, 0)
-}
+const DARK_BLUE = 'var(--color-primary)'
+const PEARL_WHITE = 'var(--color-secondary)'
+const SUNNY_YELLOW = 'var(--color-accent)'
 
 function ServiceCard({ service }: { service: any }) {
-  const [expanded, setExpanded] = useState(false)
   const hasImageIcon = !!service.icon && typeof service.icon === 'object' && !!service.icon.asset
   const iconUrl = hasImageIcon
     ? urlForImage(service.icon).width(900).height(600).fit('max').ignoreImageParams().url()
     : null
   const emojiIcon = typeof service.icon === 'string' ? service.icon : null
   const iconAlt = service.icon?.alt || service.serviceName || 'Service icon'
-  const isLongDescription = getContentLength(service.serviceDescription) > 320
 
   return (
     <div
       style={{
         backgroundColor: PEARL_WHITE,
         borderRadius: '12px',
-        boxShadow: '0 4px 16px rgba(13, 42, 99, 0.12)',
+        boxShadow: '0 4px 16px rgba(13, 42, 99, 0.08)',
         border: `1px solid ${SUNNY_YELLOW}`,
         width: '100%',
         maxWidth: '400px',
-        margin: '0 auto',
         textAlign: 'left',
         padding: '30px',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%', // Constant size
       }}
     >
       {iconUrl && (
@@ -193,59 +70,54 @@ function ServiceCard({ service }: { service: any }) {
       {service.serviceName && (
         <h3
           style={{
-            fontSize: '1.3rem',
-            marginBottom: '14px',
-            color: DARK_BLUE,
+            fontFamily: 'Outfit, sans-serif',
+            fontSize: '1.2rem',
+            marginBottom: '1rem',
+            color: 'var(--color-primary)',
             lineHeight: 1.3,
-            paddingBottom: '10px',
-            borderBottom: `2px solid ${SUNNY_YELLOW}`,
+            fontWeight: 800,
+            paddingBottom: '0.5rem',
+            borderBottom: `2px solid var(--color-accent)`,
           }}
         >
           {service.serviceName}
         </h3>
       )}
+      
       {service.serviceDescription && (
-        <div style={{ overflowX: 'auto' }}>
-          <div
-            style={
-              !expanded && isLongDescription
-                ? {
-                  maxHeight: '280px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }
-                : undefined
-            }
-          >
-            {renderRichText(service.serviceDescription)}
-          </div>
-          {!expanded && isLongDescription && (
-            <div
-              style={{
-                marginTop: '-54px',
-                height: '54px',
-                background: 'linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))',
-                pointerEvents: 'none',
-              }}
-            />
+        <div style={{ 
+          marginBottom: '1.5rem', 
+          color: 'var(--color-text-secondary)', 
+          fontSize: '0.95rem',
+          flex: 1, // Allow this area to grow but stay constrained
+          lineHeight: 1.6
+        }}>
+          {renderRichText(service.serviceDescription)}
+        </div>
+      )}
+
+
+      {(service.targetAudience || service.duration) && (
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr 1fr', 
+          gap: '1rem', 
+          fontSize: '0.8rem', 
+          color: 'var(--color-text-primary)',
+          marginTop: '1.5rem',
+          paddingTop: '1rem',
+          borderTop: '1px solid var(--color-border)',
+          opacity: 0.8
+        }}>
+          {service.targetAudience && (
+            <div>
+              <strong>Audience:</strong> <div>{service.targetAudience}</div>
+            </div>
           )}
-          {isLongDescription && (
-            <button
-              onClick={() => setExpanded((prev) => !prev)}
-              style={{
-                marginTop: '12px',
-                border: `1px solid ${SUNNY_YELLOW}`,
-                background: SUNNY_YELLOW,
-                color: DARK_BLUE,
-                fontWeight: 700,
-                cursor: 'pointer',
-                padding: '8px 14px',
-                borderRadius: '8px',
-                display: 'inline-block',
-              }}
-            >
-              {expanded ? 'Read less' : 'Read more'}
-            </button>
+          {service.duration && (
+            <div>
+              <strong>Duration:</strong> <div>{service.duration}</div>
+            </div>
           )}
         </div>
       )}
@@ -268,10 +140,12 @@ export function ServiceSection({ title, description, services, id }: SectionProp
         {title && (
           <h2
             style={{
-              fontSize: '2.5rem',
-              marginBottom: '14px',
+              fontFamily: 'Outfit, sans-serif',
+              fontSize: '1.6rem',
+              marginBottom: '20px',
               textAlign: 'center',
               color: DARK_BLUE,
+              fontWeight: 800,
               letterSpacing: '-0.02em',
             }}
           >
@@ -279,7 +153,16 @@ export function ServiceSection({ title, description, services, id }: SectionProp
           </h2>
         )}
         {description && (
-          <div style={{ fontSize: '1.2rem', marginBottom: '60px', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{ 
+            fontFamily: "'Source Serif 4', serif", 
+            fontSize: '0.95rem',
+            marginBottom: '50px', 
+            maxWidth: '800px', 
+            marginLeft: 'auto', 
+            marginRight: 'auto', 
+            color: '#4a4a4a',
+            lineHeight: 1.6
+          }}>
             {renderRichText(description, 'center')}
           </div>
         )}
@@ -288,14 +171,14 @@ export function ServiceSection({ title, description, services, id }: SectionProp
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-              gap: '20px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '30px',
               justifyContent: 'center',
-              justifyItems: 'center',
+              alignItems: 'stretch', // Ensure children stretch to fill height
             }}
           >
             {services.map((service: any, idx: number) => {
-              return <ServiceCard key={idx} service={service} />
+              return <ServiceCard key={service._id || idx} service={service} />
             })}
           </div>
         )}
@@ -303,4 +186,3 @@ export function ServiceSection({ title, description, services, id }: SectionProp
     </section>
   )
 }
-
