@@ -1,7 +1,10 @@
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = '/Suniel-Gupta';
+
 const nextConfig = {
   output: 'export',
-  basePath: '',
-  assetPrefix: '',
+  basePath: isProd ? repoName : '',
+  assetPrefix: isProd ? repoName : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
