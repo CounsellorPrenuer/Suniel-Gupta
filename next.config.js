@@ -3,6 +3,8 @@ const repoName = '/Suniel-Gupta';
 
 const nextConfig = {
   output: 'export',
+  basePath: repoName,
+  assetPrefix: repoName,
   eslint: {
     ignoreDuringBuilds: true,
   },
