@@ -127,8 +127,8 @@ export default async function Home() {
           subTagline={homepageContent?.subTagline}
           description={homepageContent?.description || 'Coach Suniel works with students and professionals who want to grow. Whether that means choosing the right career, becoming a better leader, or gaining confidence to communicate effectively.'}
           stats={homepageContent?.stats || [
-            { value: '30 plus', label: 'years of corporate experience' },
-            { value: '10,000 plus', label: 'people trained' },
+            { value: '30+', label: 'years of corporate experience' },
+            { value: '10,000+', label: 'people trained' },
           ]}
           heading={homepageContent?.tagline || heroContent?.headline}
           subheading={homepageContent?.subTagline || heroContent?.subheadline}
@@ -146,7 +146,7 @@ export default async function Home() {
         <AboutSection
           id="about"
           sectionHeading={aboutContent.sectionHeading || 'About Founder'}
-          title={(!aboutContent.title || aboutContent.title === 'About Founder') ? 'Hi, I’m Suniel Guptaa' : aboutContent.title}
+          title={(!aboutContent.title || aboutContent.title === 'About Founder') ? 'Hi, I’m Suniel Guptaa.' : aboutContent.title}
           videoUrl={aboutContent.videoUrl || 'https://youtu.be/kYP-ywYQxgE'}
           description={(!aboutContent.description || aboutContent.description.length < 150) ? `I’m a Mentoria-certified career counsellor, ICF-certified life coach, and soft skills trainer. But before any of that, I spent more than three decades working in the corporate world. I’ve worked in business development, sales management, and training leadership, including leading the training department of a major pharmaceutical company.
 
@@ -158,7 +158,7 @@ That’s why I now dedicate my work to helping people grow—whether that means 
 
 I’ve had the privilege of training 10,000+ professionals and students across industries.
 
-I’m also the author of What Next? Journey to a Successful Career, a practical guide for students and job seekers navigating today’s professional world. My programmes cover:
+I’m also the author of *What Next? Journey To A Successful Career*, a practical guide for students and job seekers navigating today’s professional world. My programmes cover:
 
 •	Behavioural Training: Shifting mindsets for long-term success.
 •	Skills-Based Training: Practical tools for communication, leadership, and efficiency.

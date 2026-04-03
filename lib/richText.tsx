@@ -10,7 +10,18 @@ export function renderRichText(content: any, textAlign: 'left' | 'center' = 'lef
 
   // Fallback for plain text
   if (typeof content === 'string') {
-    return <p style={{ color, lineHeight: '1.7', textAlign, whiteSpace: 'pre-line' }}>{content}</p>
+    // Basic Markdown-like support for italics
+    const parts = content.split(/(\*[^*]+\*)/g);
+    return (
+      <p style={{ color, lineHeight: '1.7', textAlign, whiteSpace: 'pre-line' }}>
+        {parts.map((part, i) => {
+          if (part.startsWith('*') && part.endsWith('*')) {
+            return <em key={i} style={{ fontStyle: 'italic' }}>{part.slice(1, -1)}</em>;
+          }
+          return part;
+        })}
+      </p>
+    );
   }
 
   if (!Array.isArray(content)) return null
@@ -20,8 +31,15 @@ export function renderRichText(content: any, textAlign: 'left' | 'center' = 'lef
       if (typeof child === 'string') return child
       if (child?._type !== 'span') return null
       const isBold = Array.isArray(child.marks) && child.marks.includes('strong')
+      const isItalic = Array.isArray(child.marks) && (child.marks.includes('em') || child.marks.includes('italic'))
       return (
-        <span key={child._key || childIdx} style={{ fontWeight: isBold ? 800 : 400 }}>
+        <span 
+          key={child._key || childIdx} 
+          style={{ 
+            fontWeight: isBold ? 800 : 400,
+            fontStyle: isItalic ? 'italic' : 'normal'
+          }}
+        >
           {child.text}
         </span>
       )

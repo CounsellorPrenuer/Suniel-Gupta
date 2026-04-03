@@ -3,8 +3,6 @@ const repoName = '/Suniel-Gupta';
 
 const nextConfig = {
   output: 'export',
-  basePath: isProd ? repoName : '',
-  assetPrefix: isProd ? repoName : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
