@@ -3,6 +3,7 @@ import React from 'react'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { getNavbar, getSiteConfig } from '@/lib/sanity'
+import StyledJsxRegistry from '@/components/StyledJsxRegistry'
 
 export const metadata: Metadata = {
   title: 'Remixable Template',
@@ -57,8 +58,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body style={cssVars}>
-        <Navbar logo={siteConfig?.logo} logoImage={siteConfig?.logoImage} links={navbar?.links} />
-        {children}
+        <StyledJsxRegistry>
+          <Navbar logo={siteConfig?.logo} logoImage={siteConfig?.logoImage} links={navbar?.links} />
+          {children}
+        </StyledJsxRegistry>
       </body>
     </html>
   )
