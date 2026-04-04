@@ -28,9 +28,41 @@ export function DiscoveryCallSection({ title, description, ctaText, ctaLink, id,
         <div style={{ maxWidth: '800px', margin: '0 auto 2.5rem', fontSize: '1.3rem', opacity: 0.95 }}>
           {renderRichText(description || defaultDescription, 'center', 'var(--color-secondary)')}
         </div>
-        <a href={ctaLink || '#contact'} className="btn btn-accent" style={{ padding: '15px 40px', fontSize: '1.1rem' }}>
-          {ctaText || 'Book a Discovery Call'}
-        </a>
+        <div 
+          style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            marginTop: '1rem' 
+          }}
+        >
+          <a 
+            href={ctaLink || '#contact'} 
+            style={{ 
+              padding: '18px 45px', 
+              fontSize: '1.2rem',
+              backgroundColor: 'var(--color-accent)',
+              color: 'var(--color-primary)',
+              borderRadius: '99px',
+              fontWeight: 800,
+              textDecoration: 'none',
+              boxShadow: '0 8px 24px rgba(247, 201, 72, 0.4)',
+              transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              display: 'inline-block',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)'
+              e.currentTarget.style.boxShadow = '0 12px 28px rgba(247, 201, 72, 0.5)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(247, 201, 72, 0.4)'
+            }}
+          >
+            {ctaText || 'Book a Discovery Call'}
+          </a>
+        </div>
       </div>
     </section>
   )

@@ -8,7 +8,6 @@ import { renderRichText } from '@/lib/richText'
 
 const DARK_BLUE = 'var(--color-primary)'
 const PEARL_WHITE = 'var(--color-secondary)'
-const SUNNY_YELLOW = 'var(--color-accent)'
 
 function ServiceCard({ service }: { service: any }) {
   const hasImageIcon = !!service.icon && typeof service.icon === 'object' && !!service.icon.asset
@@ -23,15 +22,17 @@ function ServiceCard({ service }: { service: any }) {
       style={{
         backgroundColor: PEARL_WHITE,
         borderRadius: '12px',
-        boxShadow: '0 4px 16px rgba(13, 42, 99, 0.08)',
-        border: `1px solid ${SUNNY_YELLOW}`,
+        boxShadow: '0 10px 30px rgba(13, 42, 99, 0.06)',
+        border: `1px solid rgba(13, 42, 99, 0.05)`,
         width: '100%',
-        maxWidth: '400px',
+        maxWidth: '450px', // Wider cards
         textAlign: 'left',
-        padding: '30px',
+        padding: '40px', // More breathing room
         display: 'flex',
         flexDirection: 'column',
-        height: '100%', // Constant size
+        height: '100%',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        cursor: 'default'
       }}
     >
       {iconUrl && (
@@ -171,10 +172,10 @@ export function ServiceSection({ title, description, services, id }: SectionProp
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '30px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+              gap: '40px',
               justifyContent: 'center',
-              alignItems: 'stretch', // Ensure children stretch to fill height
+              alignItems: 'stretch',
             }}
           >
             {services.map((service: any, idx: number) => {
